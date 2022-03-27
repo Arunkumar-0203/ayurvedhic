@@ -1,0 +1,395 @@
+{% extends 'index_base.html' %}
+{% load static  %}
+{% block content %}
+      {% if messages %}
+<script>
+alert("{{ messages }}")
+</script>
+{% endif %}
+  <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/banner1-1.jpg' %});">
+    <div class="hero-section">
+{#      <div class="container text-center wow zoomIn">#}
+{#        <span class="subhead">Let's make your life happier</span>#}
+{#        <h1 class="display-4">Healthy Living</h1>#}
+
+{#      </div>#}
+        <h1 class="text-center mb-5 wow fadeInUp" style="padding-top: 10%;color: #1c7430">Doctor Registration</h1>
+
+    </div>
+
+  </div>
+
+
+  <div class="bg-light">
+    <div class="page-section py-3 mt-md-n5 custom-index">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-3 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-secondary text-white">
+                 <span class="mai-shield-checkmark"></span>
+              </div>
+              <a class="nav-link" href="user_registration_view" >User Registration</a>
+            </div>
+          </div>
+          <div class="col-md-3 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-primary text-white">
+                <span class="mai-shield-checkmark"></span>
+              </div>
+             <a class="nav-link" href="doctor_registration_view" >Doctor Registration</a>
+            </div>
+          </div>
+          <div class="col-md-3 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-accent text-white">
+                <span class="mai-shield-checkmark"></span>
+              </div>
+               <a class="nav-link" href="pharmacy_registration_view" >Pharmacy Registration</a>
+            </div>
+          </div>
+            <div class="col-md-3 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-accent text-white">
+                <span class="mai-shield-checkmark"></span>
+              </div>
+               <a class="nav-link" href="staff_registration_view" >Staff Registration</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .page-section -->
+
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">DOCTOR REGISTRATION</h1>
+
+        <form action="" method="post" class="contact-form mt-5" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="row mb-6">
+          <div class="col-sm-6 py-2 wow fadeInLeft">
+            <label for="fullName">Name</label>
+            <input type="text" id="fullName" class="form-control" name="name" placeholder="Full name..">
+          </div>
+          <div class="col-sm-6 py-2 wow fadeInRight">
+            <label for="emailAddress">Email</label>
+            <input type="text" id="emailAddress" class="form-control" name="email" placeholder="Email address..">
+          </div>
+          <div class="col-sm-6 py-2 wow fadeInUp">
+            <label for="subject">Phone</label>
+            <input type="text" id="subject" class="form-control" name="phone" placeholder="Enter Phone ..">
+          </div>
+            <div class="col-sm-6 py-2 wow fadeInUp">
+            <label for="subject">Address</label>
+            <input type="text" id="subject" class="form-control" name="address"  placeholder="Enter Address..">
+          </div>
+            <div class="col-sm-6 py-2 wow fadeInUp">
+            <label for="subject">Place</label>
+            <input type="text" id="subject" class="form-control" name="place"  placeholder="Enter Place..">
+          </div>
+            <div class="col-sm-6 py-2 wow fadeInUp">
+            <label for="subject">District</label>
+            <input type="text" id="subject" class="form-control" name="district" placeholder="Enter District..">
+          </div>
+            <div class="col-sm-6 py-2 wow fadeInUp">
+            <label for="subject">Date of Birth</label>
+            <input type="date" id="subject" class="form-control" name="Dob" placeholder="Enter Dob..">
+          </div>
+            <div class="col-sm-6 py-2 wow fadeInUp">
+            <label for="subject">Documents</label>
+            <input type="FILE" id="subject" class="form-control" name="document" placeholder="Enter ..">
+          </div>
+            <div class="col-sm-6 py-2 wow fadeInUp">
+             <label for="subject">Age</label>
+            <input type="text" id="subject" class="form-control" name="age" placeholder="Enter age..">
+          </div>
+           <div class="col-sm-6 py-2 wow fadeInUp">
+            <label for="subject">Photo</label>
+            <input type="FILE" id="subject" class="form-control" name="photo" placeholder="Enter ..">
+          </div>
+             <div class="col-sm-6 py-2 wow fadeInUp">
+                 <label for="subject">Category</label>
+           <select style="background-color:white" class="form-control"  name="category" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
+               <option  required="required">---Select---</option>
+               <option value="Toxicology">Toxicology</option>
+               <option value="Sexologist">Sexologist</option>
+               <option value="Accupressure">Accupressure</option>
+               <option value="Gynaecologist">Gynaecologist</option>
+               <option value="Naturopathy">Naturopathy</option>
+               <option value="General Medicine">General Medicine</option>
+
+           </select>
+          </div>
+
+
+             <div class="col-sm-6 py-2 wow fadeInUp">
+            <label for="subject">Password</label>
+            <input type="password" id="subject" class="form-control" name="password" placeholder="Enter password..">
+          </div>
+             <div class="col-sm-6 py-2 wow fadeInUp">
+            <label for="subject">Username</label>
+            <input type="text" id="subject" class="form-control" name="username" placeholder="Enter username..">
+          </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary wow zoomIn">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center mb-5 wow fadeInUp">Our Doctors</h1>
+
+      <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
+        <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="{% static 'assets/img/doctors/doctor_1.jpg' %}" alt="">
+              <div class="meta">
+                <a href="#"><span class="mai-call"></span></a>
+                <a href="#"><span class="mai-logo-whatsapp"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Dr. Stein Albert</p>
+              <span class="text-sm text-grey">Cardiology</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="{% static 'assets/img/doctors/doctor_2.jpg' %}" alt="">
+              <div class="meta">
+                <a href="#"><span class="mai-call"></span></a>
+                <a href="#"><span class="mai-logo-whatsapp"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Dr. Alexa Melvin</p>
+              <span class="text-sm text-grey">Dental</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="{% static 'assets/img/doctors/doctor_3.jpg' %}" alt="">
+              <div class="meta">
+                <a href="#"><span class="mai-call"></span></a>
+                <a href="#"><span class="mai-logo-whatsapp"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
+              <span class="text-sm text-grey">General Health</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="{% static 'assets/img/doctors/doctor_3.jpg' %}" alt="">
+              <div class="meta">
+                <a href="#"><span class="mai-call"></span></a>
+                <a href="#"><span class="mai-logo-whatsapp"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
+              <span class="text-sm text-grey">General Health</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="{% static 'assets/img/doctors/doctor_3.jpg' %}" alt="">
+              <div class="meta">
+                <a href="#"><span class="mai-call"></span></a>
+                <a href="#"><span class="mai-logo-whatsapp"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
+              <span class="text-sm text-grey">General Health</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section bg-light">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">AYURVEDA TREATMENT</h1>
+      <div class="row mt-5">
+        <div class="col-lg-4 py-2 wow zoomIn">
+            <div>
+{#          <div class="card-blog">#}
+            <div class="header">
+               <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img  src="{% static 'assets/img/Ayurvedic-Practitioner.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">List of Countries without Coronavirus case</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 1 week ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div >
+              <div>
+{#            <div class="header">#}
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Anxiety-Disorder.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">Recovery Room: News beyond the pandemic</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 4 weeks ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Joint-Pain.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">What is the impact of eating too much sugar?</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_2.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Diego Simmons</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 2 months ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+          <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/hair-fall-1.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">What is the impact of eating too much sugar?</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_2.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Diego Simmons</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 2 months ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Hormonal-Imbalance.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">What is the impact of eating too much sugar?</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_2.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Diego Simmons</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 2 months ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/sex-wellness-1.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">What is the impact of eating too much sugar?</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_2.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Diego Simmons</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 2 months ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+
+        <div class="col-12 text-center mt-4 wow zoomIn">
+          <a href="blog.html" class="btn btn-primary">Read More</a>
+        </div>
+
+      </div>
+    </div>
+  </div> <!-- .page-section -->
+  <div  class="page-hero bg-image " style="background-image: url({% static 'assets/img/banner1.jpg' %}); height: 400px">
+{#    <div class="hero-section">#}
+{#      <div class="container text-center wow zoomIn">#}
+{#        <span class="subhead">Let's make your life happier</span>#}
+{#        <h1 class="display-4">Healthy Living</h1>#}
+{#        <a href="#" class="btn btn-primary">Let's Consult</a>#}
+{#      </div>#}
+{#    </div>#}
+
+
+
+
+{% endblock %}
+

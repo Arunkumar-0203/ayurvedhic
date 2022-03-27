@@ -1,0 +1,223 @@
+{% extends 'Pharmacy/pharmacy_base.html' %}
+{% load static  %}
+{% block content %}
+      {% if messages %}
+<script>
+alert("{{ messages }}")
+</script>
+{% endif %}
+  <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/doctorbanner.jpg' %});">
+    <div class="hero-section">
+      <div class="container text-center wow zoomIn">
+        <h1 class="subhead" style="color: darkgreen;padding-bottom: 400px">DOCTOR PANEL</h1>
+{#        <h1 class="display-4" style="color: white">Healthy Living</h1>#}
+{#        <a href="#" class="btn btn-primary">Let's Consult</a>#}
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="bg-light">
+    <div class="page-section py-3 mt-md-n5 custom-index">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-secondary text-white">
+                <span class="mai-chatbubbles-outline"></span>
+              </div>
+              <p><span>Chat</span> with a doctors</p>
+            </div>
+          </div>
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-primary text-white">
+                <span class="mai-shield-checkmark"></span>
+              </div>
+              <p><span>One</span>-Health Protection</p>
+            </div>
+          </div>
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-accent text-white">
+                <span class="mai-basket"></span>
+              </div>
+              <p><span>One</span>-Health Pharmacy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .page-section -->
+
+
+
+
+    <div class="page-section bg-light">
+    <div class="container">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+    integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"
+    integrity="sha256-srhz/t0GOrmVGZryG24MVDyFDYZpvUH2+dnJ8FbpGi0=" crossorigin="anonymous"></script>
+<div class="wrapper">
+    <div class="prescription_form">
+        <form action="view_prescription" method="post" >
+            {% csrf_token %}
+        <table class="prescription" data-prescription_id="<?php echo $presc->prescription_id; ?>" border="1">
+            <tbody>
+                <tr height="15%">
+                    <td colspan="2">
+                        <div class="header">
+                            <div class="logo">
+                                <img
+                                    src="https://seeklogo.com/images/H/hospital-clinic-plus-logo-7916383C7A-seeklogo.com.png" />
+                            </div>
+{#                            <div class="credentials">#}
+{#                                <h2>Doctor Name</h2>#}
+{#                                <p>Chamber Name</p>#}
+{#                                <small>Adress</small>#}
+{#                                <br />#}
+{#                                <small>Mb. 0XXXXXXXXX</small>#}
+{#                            </div>#}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="40%">
+                        <div class="desease_details">
+                            <div class="symptoms">
+                                <h4 class="d-header">Symptoms</h4>
+                                <input disabled name="Symptoms"  type="text" value="{{ Prescription.symptoms }}"  placeholder="{{ Prescription.symptoms }}">
+                            </div>
+                            <div class="tests">
+                                <h4 class="d-header">Tests</h4>
+                                  <input name="Tests" disabled type="text" value="{{ Prescription.test }}"  placeholder="{{ Prescription.test }}">
+                            </div>
+                            <div class="advice">
+                                <h4 class="d-header">Advice</h4>
+                                 <input disabled  name="advice" type="text" value="{{ Prescription.test }}" placeholder="{{ Prescription.test }}" >
+                            </div>
+                        </div>
+                    </td>
+                    <td width="60%" valign="top">
+                       <table class="table">
+                          <tr>
+                              <td>No:</td>
+                              <td>Medicine name</td>
+                              <th>Quantity</th>
+                              <th>Time</th>
+                              <th>Consider food</th>
+                          </tr>
+
+                          <tr>
+                              <input type="hidden"  class="form-control" value="{{ id }}" name="id" placeholder="User name">
+                              <td>1</td>
+                              <td><input type="text"  disabled class="form-control" value="{{ Prescription.medicine1 }}"  name="Quantity1" placeholder="{{ Prescription.medicine1 }}"></td>
+                              <td><input type="text" disabled  class="form-control"  name="Quantity1" placeholder="{{ Prescription.Quantity1 }}"></td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.time1 }}"> </td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.food_time1 }}"> </td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td>2</td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.medicine2 }}"></td>
+                              <td><input type="text" disabled  class="form-control"  name="Quantity1" placeholder="{{ Prescription.Quantity2 }}"></td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.time2}}"> </td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.food_time2 }}"> </td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td>3</td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.medicine3 }}"></td>
+                              <td><input type="text" disabled  class="form-control"  name="Quantity1" placeholder="{{ Prescription.Quantity3 }}"></td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.time3 }}"> </td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.food_time3 }}"> </td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td>4</td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.medicine4 }}"></td>
+                              <td><input type="text" disabled  class="form-control"  name="Quantity1" placeholder="{{ Prescription.Quantity4 }}"></td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.time4 }}"> </td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.food_time4 }}"> </td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td>5</td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.medicine5 }}"></td>
+                              <td><input type="text" disabled  class="form-control"  name="Quantity1" placeholder="{{ Prescription.Quantity5 }}"></td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.time5 }}"> </td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.food_time5 }}"> </td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td>6</td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.medicine6 }}"></td>
+                              <td><input type="text" disabled  class="form-control"  name="Quantity1" placeholder="{{ Prescription.Quantity6 }}"></td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.time6 }}"> </td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.food_time6 }}"> </td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td>7</td>
+                             <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.medicine7 }}"></td>
+                              <td><input type="text" disabled  class="form-control"  name="Quantity1" placeholder="{{ Prescription.Quantity7 }}"></td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.time7 }}"> </td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.food_time7 }}"> </td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td>8</td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.medicine8 }}"></td>
+                              <td><input type="text" disabled  class="form-control"  name="Quantity1" placeholder="{{ Prescription.Quantity8 }}"></td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.time8 }}"> </td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.food_time8 }}"> </td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td>9</td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.medicine9}}"></td>
+                              <td><input type="text" disabled  class="form-control"  name="Quantity1" placeholder="{{ Prescription.Quantity9 }}"></td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.time9 }}"> </td>
+                              <td><input type="text"  disabled class="form-control"  name="Quantity1" placeholder="{{ Prescription.food_time9 }}"> </td>
+                              <td></td>
+                          </tr>
+
+
+
+                        </tbody>
+                      </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="button_group">
+            <button class="issue_prescription btn btn-success">Issue</button>
+            <!-- <button class="pdf_prescription btn btn-danger">PDF</button> -->
+        </div>
+        <div id="snacking">Saving...</div>
+        <div id="snacked">Saved!</div>
+    </div>
+</div>
+
+<script id="new_medicine" type="text/template">
+
+</script>
+        </form>
+    </div>
+  </div> <!-- .page-section -->
+
+
+
+
+
+
+  </div>
+{% endblock %}
+

@@ -1,0 +1,367 @@
+{% extends 'admin/admin_base.html' %}
+{% load static  %}
+{% block content %}
+      {% if messages %}
+<script>
+alert("{{ messages }}")
+</script>
+{% endif %}
+  <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/546120191102105516.jpg' %});">
+    <div class="hero-section">
+      <div class="container text-center wow zoomIn">
+        <h3 class="subhead" >ADMIN PANEL</h3>
+          <br>
+          <h3 class="subhead">MANAGE DOCTORS</h3>
+        <h1 class="display-4">Healthy Living</h1>
+        <a href="#" class="btn btn-primary">Let's Consult</a>
+      </div>
+    </div>
+
+  </div>
+
+
+   <div class="bg-light">
+    <div class="page-section py-3 mt-md-n5 custom-index">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-3 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-secondary text-white">
+                 <span class="mai-shield-checkmark"></span>
+              </div>
+              <a class="nav-link" href="Pharmacy_registration_list" > Pharmacy Registered list</a>
+            </div>
+          </div>
+          <div class="col-md-3 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-primary text-white">
+                <span class="mai-shield-checkmark"></span>
+              </div>
+             <a class="nav-link" href="Pharmacy_accepted_list" >Pharmacy Accepted list</a>
+            </div>
+          </div>
+          <div class="col-md-3 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-accent text-white">
+                <span class="mai-shield-checkmark"></span>
+              </div>
+               <a class="nav-link" href="Pharmacy_rejected_list" >Pharmacy Rejected list</a>
+            </div>
+          </div>
+{#            <div class="col-md-3 py-3 py-md-0">#}
+{#            <div class="card-service wow fadeInUp">#}
+{#              <div class="circle-shape bg-accent text-white">#}
+{#                <span class="mai-shield-checkmark"></span>#}
+{#              </div>#}
+{#               <a class="nav-link" href="staff_registration_view" >Staff Registration</a>#}
+{#            </div>#}
+{#          </div>#}
+        </div>
+      </div>
+    </div> <!-- .page-section -->
+
+
+
+
+      <div class="page-section">
+    <div class="container">
+      <h1 class="text-center mb-5 wow fadeInUp">Rejected Staff List</h1>
+
+      <table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 1000px;">
+                                 <th class="success" style="color: white;">Photo</th>
+                                 <th class="success" style="color: white;">name</th>
+                                 <th class="success" style="color: white;">contact</th>
+                                 <th class="success" style="color: white;">email</th>
+                                 <th class="success" style="color: white;">address</th>
+                                 <th class="success" style="color: white;">Proof</th>
+{#                                  <th class="success" style="color: white;">Place</th>#}
+                                   <th class="success" style="color: white;">District</th>
+{#                                  <th class="success" style="color: white;">Status</th>#}
+                                    <th class="success" style="color: white;">Accept</th>
+          <th class="success" style="color: white;">Reject</th>
+              {% for i in PARMACY %}
+                                <tr style="background-color:white;width: 700px;">
+                                    <td><img  style="width: 100px;height: 100px;" src="{{ i.photo.url }}" class="img-responsive" alt="slide"></td>
+                                    <td>{{ i.user.first_name}}</td>
+                                    <td>{{ i.contact}}</td>
+                                    <td>{{ i.email}}</td>
+                                    <td>{{ i.Address}}</td>
+                                    <td><a href="{{ i.id_proof.url }}" download>Download </a></td>
+
+{#                                    <td>{{ i.place }}</td>#}
+                                    <td>{{ i.district }}</td>
+{#                                    <td>{{ i.status }}</td>#}
+
+                                    <td><button style="background-color:lightslategray"><a href="Pharmacy_rejected_list_accepted?id={{ i.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>
+                                    <td><button style="background-color:lightslategray"><a href="Pharmacy_rejected?id={{ i.user_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>
+
+                                </tr>
+              {% endfor %}
+
+
+
+                            </table>
+    </div>
+  </div>
+
+  <div class="page-section bg-light">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp"></h1>
+      <div class="row mt-5">
+        <div class="col-lg-4 py-2 wow zoomIn">
+            <div>
+{#          <div class="card-blog">#}
+            <div class="header">
+               <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img  src="{% static 'assets/img/Ashwagandha.jpg' %}" alt="">
+                <p>Ashwagandha</p>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div >
+              <div>
+{#            <div class="header">#}
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Bitter Apricot Kernels.jpg' %}" alt="">
+                  <p>Bitter Apricot Kernels</p>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Black Cumin Seed.jpg' %}" alt="">
+                <p>Black Cumin Seed</p>
+
+            </div>
+
+          </div>
+        </div>
+          <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Curcumin Extract.jpg' %}" alt="">
+                <p>Curcumin Extract</p>
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Dried Ginger.jpg' %}" alt="">
+                <p>Dried Ginger</p>
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Gum Guggul.jpg' %}" alt="">
+                <p>Gum Guggul</p>
+
+            </div>
+
+          </div>
+        </div>
+          <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Licorice Roots.jpg' %}" alt="">
+                <p>Licorice Roots</p>
+
+            </div>
+
+          </div>
+        </div>
+          <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Kutki.jpg' %}" alt="">
+                <p>Kutki</p>
+
+            </div>
+
+          </div>
+        </div>
+          <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Picrorhiza Kutki.jpg' %}" alt="">
+                <p>Picrorhiza Kutki</p>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12 text-center mt-4 wow zoomIn">
+          <a href="/admin" class="btn btn-primary">Read More</a>
+        </div>
+
+      </div>
+    </div>
+  </div> <!-- .page-section -->
+
+
+
+
+  <div class="page-section bg-light">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">AYURVEDA TREATMENT</h1>
+      <div class="row mt-5">
+        <div class="col-lg-4 py-2 wow zoomIn">
+            <div>
+{#          <div class="card-blog">#}
+            <div class="header">
+               <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img  src="{% static 'assets/img/Ayurvedic-Practitioner.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">List of Countries without Coronavirus case</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 1 week ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div >
+              <div>
+{#            <div class="header">#}
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Anxiety-Disorder.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">Recovery Room: News beyond the pandemic</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 4 weeks ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Joint-Pain.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+          <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/hair-fall-1.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Hormonal-Imbalance.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/sex-wellness-1.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12 text-center mt-4 wow zoomIn">
+          <a href="blog.html" class="btn btn-primary">Read More</a>
+        </div>
+
+      </div>
+    </div>
+  </div> <!-- .page-section -->
+
+{% endblock %}
+

@@ -1,0 +1,327 @@
+{% extends 'user/user_base.html' %}
+{% load static  %}
+{% block content %}
+      {% if messages %}
+<script>
+alert("{{ messages }}")
+</script>
+{% endif %}
+  <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/doctorbanner.jpg' %});">
+    <div class="hero-section">
+      <div class="container text-center wow zoomIn">
+        <h1 class="subhead" style="color: darkgreen;padding-bottom: 400px">DOCTOR PANEL</h1>
+{#        <h1 class="display-4" style="color: white">Healthy Living</h1>#}
+{#        <a href="#" class="btn btn-primary">Let's Consult</a>#}
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="bg-light">
+    <div class="page-section py-3 mt-md-n5 custom-index">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-secondary text-white">
+                <span class="mai-chatbubbles-outline"></span>
+              </div>
+              <p><span>Chat</span> with a doctors</p>
+            </div>
+          </div>
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-primary text-white">
+                <span class="mai-shield-checkmark"></span>
+              </div>
+              <p><span>One</span>-Health Protection</p>
+            </div>
+          </div>
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-accent text-white">
+                <span class="mai-basket"></span>
+              </div>
+              <p><span>One</span>-Health Pharmacy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .page-section -->
+
+
+
+
+    <div class="page-section bg-light">
+    <div class="container">
+     <form action="" method="post">
+         {% csrf_token %}
+    <fieldset>
+        <div class="text-center">
+        <h2>APPOIMENT FORM<br><br>
+{#        <small>to ST/SC/OBC-SEBC </small></h2>#}
+        </div>
+    </fieldset>
+
+     <!-- <label class="checkbox">
+         <span>Fresh:</span>
+         <input type="checkbox"  name="sameadr"><span class="checkmark"></span>
+         <span>/ Renewal:</span>
+         <input type="checkbox"  name="sameadr"><span class="checkmark"></span>
+         <span>[put a tick mark in the box for whichever is applicable]</span>
+     </label>
+ -->
+
+    <fieldset>
+        <legend for="1735724595">Basic Details</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>1. Name in full :</label>
+
+                <input type="text" name="name"  value="{{ result }}" placeholder="{{ result }}">
+                <label>2. Designation :</label>
+                <input type="text" name="category"  value="{{ designation }}" placeholder="{{ designation }}">
+                <input type="hidden" name="id"  value="{{ id }}" placeholder="{{ id }}">
+
+            </div>
+             <br>
+
+
+            <div class="radio">
+
+
+
+                <label>3.Booking Date:</label>
+                <input type="date" name="date">
+                <label class="position-relative"><br>(DD/MM/YYYY)</label>
+
+            </div>
+
+            <br>
+            <div class="radio">
+                <label>4.Time:</label>
+                <input type="time" name="time">
+            </div>
+            <br>
+            <div class="radio">
+                <label>5.Description:</label>
+                <textarea style="width: 300px" type="Number"  name="description"></textarea>
+            </div>
+        </div>
+    </fieldset>
+
+
+
+      <div><button class="btn btn-primary w-50 py-3" type="submit">Submit</button></div>
+
+<!--</form>-->
+</div>
+</form>
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous"></script>
+<script>
+$('#bootstrapForm').submit(function (event) {
+    event.preventDefault()
+    var extraData = {}
+    {
+        /* Parsing input date id=1366943480 */
+        var dateField = $("#1366943480_date").val()
+        var timeField = $("#1366943480_time").val()
+        let d = new Date(dateField)
+        if (!isNaN(d.getTime())) {
+            extraData["entry.1366943480_year"] = d.getFullYear()
+            extraData["entry.1366943480_month"] = d.getMonth() + 1
+            extraData["entry.1366943480_day"] = d.getUTCDate()
+        }
+        if (timeField && timeField.split(':').length >= 2) {
+            let values = timeField.split(':')
+            extraData["entry.1366943480_hour"] = values[0]
+            extraData["entry.1366943480_minute"] = values[1]
+        }
+    }
+    {
+        /* Parsing input date id=737336953 */
+        var dateField = $("#737336953_date").val()
+        var timeField = $("#737336953_time").val()
+        let d = new Date(dateField)
+        if (!isNaN(d.getTime())) {
+            extraData["entry.737336953_year"] = d.getFullYear()
+            extraData["entry.737336953_month"] = d.getMonth() + 1
+            extraData["entry.737336953_day"] = d.getUTCDate()
+        }
+        if (timeField && timeField.split(':').length >= 2) {
+            let values = timeField.split(':')
+            extraData["entry.737336953_hour"] = values[0]
+            extraData["entry.737336953_minute"] = values[1]
+        }
+    }
+    $('#bootstrapForm').ajaxSubmit({
+        data: extraData,
+        dataType: 'jsonp',  // This won't really work. It's just to use a GET instead of a POST to allow cookies from different domain.
+        error: function () {
+            // Submit of form should be successful but JSONP callback will fail because Google Forms
+            // does not support it, so this is handled as a failure.
+            alert('Form Submitted. Thanks.')
+            // You can also redirect the user to a custom thank-you page:
+            // window.location = 'http://www.mydomain.com/thankyoupage.html'
+        }
+    })
+})
+</script>
+    </div>
+  </div> <!-- .page-section -->
+
+
+
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center mb-5 wow fadeInUp">Our Doctors</h1>
+
+      <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
+        {% for i in Doctor %}
+        <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="{{ i.photo.url }}" alt="">
+              <div class="meta">
+                <a href="#"><span class="mai-call"></span></a>
+                <a href="#"><span class="mai-logo-whatsapp"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Dr. {{ i.user.first_name }}</p>
+{#              <span class="text-sm text-grey">Cardiology</span>#}
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section bg-light">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">AYURVEDA TREATMENT</h1>
+      <div class="row mt-5">
+        <div class="col-lg-4 py-2 wow zoomIn">
+            <div>
+{#          <div class="card-blog">#}
+            <div class="header">
+               <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img  src="{% static 'assets/img/Ayurvedic-Practitioner.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">List of Countries without Coronavirus case</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 1 week ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div >
+              <div>
+{#            <div class="header">#}
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Anxiety-Disorder.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">Recovery Room: News beyond the pandemic</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 4 weeks ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Joint-Pain.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+          <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/hair-fall-1.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Hormonal-Imbalance.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/sex-wellness-1.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12 text-center mt-4 wow zoomIn">
+          <a href="blog.html" class="btn btn-primary">Read More</a>
+        </div>
+
+      </div>
+    </div>
+  </div> <!-- .page-section -->
+  <div  class="page-hero bg-image " style="background-image: url({% static 'assets/img/banner1.jpg' %}); height: 400px">
+
+
+  </div>
+{% endblock %}
+

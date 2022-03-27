@@ -1,0 +1,216 @@
+{% extends 'Pharmacy/pharmacy_base.html' %}
+{% load static  %}
+{% block content %}
+      {% if messages %}
+<script>
+alert("{{ messages }}")
+</script>
+{% endif %}
+  <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/doctorbanner.jpg' %});">
+    <div class="hero-section">
+      <div class="container text-center wow zoomIn">
+        <h1 class="subhead" style="color: darkgreen;padding-bottom: 400px">DOCTOR PANEL</h1>
+{#        <h1 class="display-4" style="color: white">Healthy Living</h1>#}
+{#        <a href="#" class="btn btn-primary">Let's Consult</a>#}
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="bg-light">
+    <div class="page-section py-3 mt-md-n5 custom-index">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-secondary text-white">
+                <span class="mai-chatbubbles-outline"></span>
+              </div>
+              <p><span>Chat</span> with a doctors</p>
+            </div>
+          </div>
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-primary text-white">
+                <span class="mai-shield-checkmark"></span>
+              </div>
+              <p><span>One</span>-Health Protection</p>
+            </div>
+          </div>
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-accent text-white">
+                <span class="mai-basket"></span>
+              </div>
+              <p><span>One</span>-Health Pharmacy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .page-section -->
+{
+
+
+    <div class="page-section bg-light" style="padding-right: 100px">
+    <div class="container" >
+      <table class="table" >
+                          <tr>
+                              <td>user Image</td>
+                              <th>Name</th>
+                              <th>Phone</th>
+                              <th>Email</th>
+                              <th>Doctor</th>
+                              <th>image</th>
+                              <th>phone</th>
+                              <th>Status</th>
+                              <th>View prescription</th>
+
+                          </tr>
+                       <form action="" method="post">
+                       {% csrf_token %}
+                        {% for i in  BOOKING %}
+                          <tr>
+                              <td><img  style="width: 100px;height: 100px;" src="{{ i.Booking.user.photo.url }}" class="img-responsive" alt="slide"></td>
+                              <td>{{ i.Booking.user.user.first_name }}</td>
+                              <td>{{ i.Booking.user.contact }}</td>
+                              <td>{{ i.Booking.user.email }}</td>
+                              <td>{{ i.doctor_id.user.first_name }}</td>
+                              <td><img  style="width: 100px;height: 100px;" src="{{ i.doctor_id.photo.url }}" class="img-responsive" alt="slide"></td>
+                               <td>{{ i.doctor_id.contact }}</td>
+                              <td>{{ i.status }}</td>
+                              <td><a href="view_consulted_users_list_send_parmacy?id={{ i.id }}" class="badge badge-danger">View prescription</a></td>
+
+                               <input type="hidden" name="id" value="{{ i.id }}" id="" placeholder="">
+                          </tr>
+                        {% endfor %}
+                       </form>
+
+                        </tbody>
+                      </table>
+    </div>
+  </div> <!-- .page-section -->
+
+
+
+
+  <div class="page-section bg-light">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">AYURVEDA TREATMENT</h1>
+      <div class="row mt-5">
+        <div class="col-lg-4 py-2 wow zoomIn">
+            <div>
+{#          <div class="card-blog">#}
+            <div class="header">
+               <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img  src="{% static 'assets/img/Ayurvedic-Practitioner.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">List of Countries without Coronavirus case</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 1 week ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div >
+              <div>
+{#            <div class="header">#}
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Anxiety-Disorder.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">Recovery Room: News beyond the pandemic</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 4 weeks ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Joint-Pain.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+          <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/hair-fall-1.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Hormonal-Imbalance.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/sex-wellness-1.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12 text-center mt-4 wow zoomIn">
+          <a href="blog.html" class="btn btn-primary">Read More</a>
+        </div>
+
+      </div>
+    </div>
+  </div> <!-- .page-section -->
+  <div  class="page-hero bg-image " style="background-image: url({% static 'assets/img/banner1.jpg' %}); height: 400px">
+
+
+  </div>
+{% endblock %}
+
