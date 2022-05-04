@@ -110,7 +110,7 @@ alert("{{ messages }}")
                               <td><select style="width: 100px"  class="form-control"  name="pharmacy" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
                               <option  value="null">--Select--</option>
                               {% for i in Pharmacy %}
-                                   <option value="{{ i.id }}">{{ i.user.first_name }} </option>
+                                   <option  value="{{ i.id }}">{{ i.user.first_name }} </option>
 {#                              <a href="officers_district?dist_id={{ i.id }}" >{{ k.location }} </a>#}
                               {% endfor %}
                                </select></td>

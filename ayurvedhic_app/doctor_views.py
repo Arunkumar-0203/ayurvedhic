@@ -24,17 +24,22 @@ class view_users(TemplateView):
         id = request.POST['id']
         print(id)
         Pharmacy =request.POST['pharmacy']
-        print(Pharmacy)
-        PHARMACY= prescriptionTopharmacy()
-        PHARMACY.doctor_id_id=DOCTOR.id
-        PHARMACY.PARMACY_id_id= Pharmacy
-        PHARMACY.Booking_id= id
-        PHARMACY.status = "sent to pharmacy"
-        BOOKINGs = booking.objects.get(id=id)
-        BOOKINGs.status = 'sent to pharmacy'
-        BOOKINGs.save()
-        PHARMACY.save()
-        return render(request, 'doctor/view_user.html',{'BOOKING':BOOKING,'Pharmacy':Pharmacys})
+
+        if Pharmacy=='null':
+            return render(request, 'doctor/doctor_index.html',{'messages':'select any pharmacy'})
+        else:
+            print(Pharmacy)
+            PHARMACY= prescriptionTopharmacy()
+            PHARMACY.doctor_id_id=DOCTOR.id
+            PHARMACY.PARMACY_id_id= Pharmacy
+            PHARMACY.Booking_id= id
+            PHARMACY.status = "sent to pharmacy"
+            BOOKINGs = booking.objects.get(id=id)
+            BOOKINGs.status = 'sent to pharmacy'
+            BOOKINGs.save()
+            PHARMACY.save()
+            return render(request, 'doctor/view_user.html',{'BOOKING':BOOKING,'Pharmacy':Pharmacys})
+
 
 
 class view_medicine(TemplateView):
@@ -92,11 +97,10 @@ class view_prescription(TemplateView):
         else:
             MED1= medicine.objects.get(id=med1)
 
-
         time1 = request.POST['time1']
         print(time1)
         food1 = request.POST['food1']
-        print(food1)
+        print(food1,"11111111111")
         quantity1 = request.POST['Quantity1']
         print(quantity1)
 
@@ -122,7 +126,7 @@ class view_prescription(TemplateView):
             MED3= medicine.objects.get(id=med3)
         time3 = request.POST['time3']
         print(time3)
-        food3 = request.POST['food2']
+        food3 = request.POST['food3']
         print(food3)
         quantity3 = request.POST['Quantity3']
         print(quantity3)
@@ -232,10 +236,11 @@ class view_prescription(TemplateView):
             Prescription.Quantity2= quantity2
         Prescription.time2= time2
         Prescription.food_time2= food2
+
         if MED2=='0':
-            Prescription.medicine2= '0'
+            Prescription.medicine3= '0'
         else:
-            Prescription.medicine2 = MED2.med_name
+            Prescription.medicine3 = MED2.med_name
 
         Prescription.medicine_name3= med3
         if quantity3=='':
@@ -271,7 +276,7 @@ class view_prescription(TemplateView):
         else:
             Prescription.Quantity5= quantity5
         Prescription.time5= time5
-        Prescription.food_time1= food5
+        Prescription.food_time5= food5
         if MED5=='0':
             Prescription.medicine5= '0'
         else:

@@ -119,7 +119,7 @@ alert("{{ messages }}")
                               <input type="hidden"  class="form-control" value="{{ id }}" name="id" placeholder="User name">
                               <td>1</td>
                               <td> <select  class="form-control"  name="med1" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
-                              <option  required="required">---Select---</option>
+                              <option  required="required" value="null">---Select---</option>
                               {% for i in Medicine %}
                                    <option value="{{ i.id }}">{{ i.med_name }} </option>
 {#                              <a href="officers_district?dist_id={{ i.id }}" >{{ k.location }} </a>#}
@@ -127,16 +127,16 @@ alert("{{ messages }}")
                                </select></td>
                               <td><input type="number"  class="form-control" value="null" name="Quantity1" placeholder="User name"></td>
                               <td> <select style="background-color:white" class="form-control"  name="time1" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
-                                 <option  required="required">---Select---</option>
+                                 <option  required="required" value="null">---Select---</option>
                                   <option value="1+1+1">1+1+1</option>
                                   <option value="1+0+1">1+0+1</option>
-                                  <option value="0+1+1">1+1+1</option>
-                                  <option value="1+0+0">1+1+1</option>
-                                  <option value="0+0+1">1+1+1</option>
+                                  <option value="0+1+1">0+1+1</option>
+                                  <option value="1+0+0">1+0+0</option>
+                                  <option value="0+0+1">0+0+1</option>
                                   <option value="1+1+1+1">1+1+1+1</option>
                                 </select></td>
                               <td><select style="background-color:white" class="form-control"  name="food1" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
-                                     <option  required="required">---Select---</option>
+                                     <option  required="required" value="null">---Select---</option>
                                      <option value="After Meal">After Meal</option>
                                       <option value="Before Meal">Before Meal</option>
                                       <option value="Take any time">Take any time</option>
@@ -156,11 +156,11 @@ alert("{{ messages }}")
                               <td><input type="number"  class="form-control" value="null"  name="Quantity2" placeholder="User name"></td>
                               <td> <select style="background-color:white" class="form-control"  name="time2" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
                                  <option  value="null">---Select---</option>
-                                  <option value="1+1+1">1+1+1</option>
+                                 <option value="1+1+1">1+1+1</option>
                                   <option value="1+0+1">1+0+1</option>
-                                  <option value="0+1+1">1+1+1</option>
-                                  <option value="1+0+0">1+1+1</option>
-                                  <option value="0+0+1">1+1+1</option>
+                                  <option value="0+1+1">0+1+1</option>
+                                  <option value="1+0+0">1+0+0</option>
+                                  <option value="0+0+1">0+0+1</option>
                                   <option value="1+1+1+1">1+1+1+1</option>
                                 </select></td>
                               <td><select style="background-color:white" class="form-control"  name="food2" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
@@ -184,11 +184,11 @@ alert("{{ messages }}")
                               <td><input type="number"  class="form-control" value="null"  name="Quantity3" placeholder="User name"></td>
                               <td> <select style="background-color:white" class="form-control"  name="time3" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
                                  <option  value="null">---Select---</option>
-                                  <option value="1+1+1">1+1+1</option>
+                                 <option value="1+1+1">1+1+1</option>
                                   <option value="1+0+1">1+0+1</option>
-                                  <option value="0+1+1">1+1+1</option>
-                                  <option value="1+0+0">1+1+1</option>
-                                  <option value="0+0+1">1+1+1</option>
+                                  <option value="0+1+1">0+1+1</option>
+                                  <option value="1+0+0">1+0+0</option>
+                                  <option value="0+0+1">0+0+1</option>
                                   <option value="1+1+1+1">1+1+1+1</option>
                                 </select></td>
                               <td><select style="background-color:white" class="form-control"  name="food3" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
@@ -214,9 +214,9 @@ alert("{{ messages }}")
                                  <option  value="null">---Select---</option>
                                   <option value="1+1+1">1+1+1</option>
                                   <option value="1+0+1">1+0+1</option>
-                                  <option value="0+1+1">1+1+1</option>
-                                  <option value="1+0+0">1+1+1</option>
-                                  <option value="0+0+1">1+1+1</option>
+                                  <option value="0+1+1">0+1+1</option>
+                                  <option value="1+0+0">1+0+0</option>
+                                  <option value="0+0+1">0+0+1</option>
                                   <option value="1+1+1+1">1+1+1+1</option>
                                 </select></td>
                               <td><select style="background-color:white" class="form-control"  name="food4" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
@@ -240,11 +240,11 @@ alert("{{ messages }}")
                               <td><input type="number"  class="form-control" value="null"  name="Quantity5" placeholder="User name"></td>
                               <td> <select style="background-color:white" class="form-control"  name="time5" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
                                  <option  value="null">---Select---</option>
-                                  <option value="1+1+1">1+1+1</option>
+                                 <option value="1+1+1">1+1+1</option>
                                   <option value="1+0+1">1+0+1</option>
-                                  <option value="0+1+1">1+1+1</option>
-                                  <option value="1+0+0">1+1+1</option>
-                                  <option value="0+0+1">1+1+1</option>
+                                  <option value="0+1+1">0+1+1</option>
+                                  <option value="1+0+0">1+0+0</option>
+                                  <option value="0+0+1">0+0+1</option>
                                   <option value="1+1+1+1">1+1+1+1</option>
                                 </select></td>
                               <td><select style="background-color:white" class="form-control"  name="food5" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
@@ -268,11 +268,11 @@ alert("{{ messages }}")
                               <td><input type="number"  class="form-control" value="null"  name="Quantity6" placeholder="User name"></td>
                               <td> <select style="background-color:white" class="form-control"  name="time6" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
                                  <option  value="null">---Select---</option>
-                                  <option value="1+1+1" >1+1+1</option>
+                                 <option value="1+1+1">1+1+1</option>
                                   <option value="1+0+1">1+0+1</option>
-                                  <option value="0+1+1">1+1+1</option>
-                                  <option value="1+0+0">1+1+1</option>
-                                  <option value="0+0+1">1+1+1</option>
+                                  <option value="0+1+1">0+1+1</option>
+                                  <option value="1+0+0">1+0+0</option>
+                                  <option value="0+0+1">0+0+1</option>
                                   <option value="1+1+1+1">1+1+1+1</option>
                                 </select></td>
                               <td><select style="background-color:white" class="form-control"  name="food6" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
@@ -298,9 +298,9 @@ alert("{{ messages }}")
                                  <option  value="null">---Select---</option>
                                   <option value="1+1+1">1+1+1</option>
                                   <option value="1+0+1">1+0+1</option>
-                                  <option value="0+1+1">1+1+1</option>
-                                  <option value="1+0+0">1+1+1</option>
-                                  <option value="0+0+1">1+1+1</option>
+                                  <option value="0+1+1">0+1+1</option>
+                                  <option value="1+0+0">1+0+0</option>
+                                  <option value="0+0+1">0+0+1</option>
                                   <option value="1+1+1+1">1+1+1+1</option>
                                 </select></td>
                               <td><select style="background-color:white" class="form-control"  name="food7" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
@@ -324,11 +324,11 @@ alert("{{ messages }}")
                               <td><input type="number"  class="form-control" value="null"  name="Quantity8" placeholder="User name"></td>
                               <td> <select style="background-color:white" class="form-control"  name="time8" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
                                  <option  value="null">---Select---</option>
-                                  <option value="1+1+1">1+1+1</option>
+                                 <option value="1+1+1">1+1+1</option>
                                   <option value="1+0+1">1+0+1</option>
-                                  <option value="0+1+1">1+1+1</option>
-                                  <option value="1+0+0">1+1+1</option>
-                                  <option value="0+0+1">1+1+1</option>
+                                  <option value="0+1+1">0+1+1</option>
+                                  <option value="1+0+0">1+0+0</option>
+                                  <option value="0+0+1">0+0+1</option>
                                   <option value="1+1+1+1">1+1+1+1</option>
                                 </select></td>
                               <td><select style="background-color:white" class="form-control"  name="food8" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
@@ -352,11 +352,11 @@ alert("{{ messages }}")
                               <td><input type="number"  class="form-control" value="null"  name="Quantity9" placeholder="User name"></td>
                               <td> <select style="background-color:white" class="form-control"  name="time9" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
                                  <option  value="null">---Select---</option>
-                                  <option value="1+1+1">1+1+1</option>
+                                 <option value="1+1+1">1+1+1</option>
                                   <option value="1+0+1">1+0+1</option>
-                                  <option value="0+1+1">1+1+1</option>
-                                  <option value="1+0+0">1+1+1</option>
-                                  <option value="0+0+1">1+1+1</option>
+                                  <option value="0+1+1">0+1+1</option>
+                                  <option value="1+0+0">1+0+0</option>
+                                  <option value="0+0+1">0+0+1</option>
                                   <option value="1+1+1+1">1+1+1+1</option>
                                 </select></td>
                               <td><select style="background-color:white" class="form-control"  name="food9" id="PLACE" required="required" onchange="show_dis(this.value,0)" >

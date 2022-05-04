@@ -6,13 +6,15 @@
 alert("{{ messages }}")
 </script>
 {% endif %}
-  <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/doctorbanner.jpg' %});">
-    <div class="hero-section">
+  <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/Slider-2-2.png' %});">
+
+     <div class="hero-section">
       <div class="container text-center wow zoomIn">
-        <h1 class="subhead" style="color: darkgreen;padding-bottom: 400px">DOCTOR PANEL</h1>
-{#        <h1 class="display-4" style="color: white">Healthy Living</h1>#}
+        <h1 class="subhead" style="color: white">PHARMACY PANEL</h1>
+        <h1 class="display-4" style="color: white">Healthy Living</h1>
 {#        <a href="#" class="btn btn-primary">Let's Consult</a>#}
       </div>
+    </div>
     </div>
 
   </div>
@@ -79,7 +81,7 @@ alert("{{ messages }}")
                               <td><img  style="width: 100px;height: 100px;" src="{{ i.doctor_id.photo.url }}" class="img-responsive" alt="slide"></td>
                                <td>{{ i.doctor_id.contact }}</td>
                               <td>{{ i.status }}</td>
-                              <td><a href="view_consulted_users_list_send_parmacy?id={{ i.id }}" class="badge badge-danger">View prescription</a></td>
+                              <td><a href="view_consulted_users_list_send_parmacy?id={{ i.Booking_id }}" class="badge badge-danger">View prescription</a></td>
 
                                <input type="hidden" name="id" value="{{ i.id }}" id="" placeholder="">
                           </tr>

@@ -10,9 +10,22 @@ from ayurvedhic_app.models import UserType, users, doctor, pharmacy, staff
 
 class index_view(TemplateView):
     template_name = 'index.html'
+    def get_context_data(self, **kwargs):
+        context = super(index_view,self).get_context_data(**kwargs)
+        doctors = doctor.objects.all()
+        context['doctors']=doctors
+        return context
+
+
+
 
 class docters_view(TemplateView):
     template_name = 'doctors.html'
+    def get_context_data(self, **kwargs):
+        context = super(docters_view,self).get_context_data(**kwargs)
+        doctors = doctor.objects.all()
+        context['doctors']=doctors
+        return context
 
 class registration_view(TemplateView):
     template_name="registration.html"

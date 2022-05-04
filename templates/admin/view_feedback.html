@@ -20,46 +20,6 @@ alert("{{ messages }}")
   </div>
 
 
-  <div class="bg-light">
-    <div class="page-section py-3 mt-md-n5 custom-index">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-3 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-secondary text-white">
-                 <span class="mai-shield-checkmark"></span>
-              </div>
-              <a class="nav-link" href="staff_registration_list" > Staff Registered list</a>
-            </div>
-          </div>
-          <div class="col-md-3 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-primary text-white">
-                <span class="mai-shield-checkmark"></span>
-              </div>
-             <a class="nav-link" href="staff_accepted_list" >Staff Accepted list</a>
-            </div>
-          </div>
-          <div class="col-md-3 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-accent text-white">
-                <span class="mai-shield-checkmark"></span>
-              </div>
-               <a class="nav-link" href="staff_rejected_list" >Staff Rejected list</a>
-            </div>
-          </div>
-{#            <div class="col-md-3 py-3 py-md-0">#}
-{#            <div class="card-service wow fadeInUp">#}
-{#              <div class="circle-shape bg-accent text-white">#}
-{#                <span class="mai-shield-checkmark"></span>#}
-{#              </div>#}
-{#               <a class="nav-link" href="staff_registration_view" >Staff Registration</a>#}
-{#            </div>#}
-{#          </div>#}
-        </div>
-      </div>
-    </div> <!-- .page-section -->
-
 
 
 
@@ -74,27 +34,20 @@ alert("{{ messages }}")
                                  <th class="success" style="color: white;">contact</th>
                                  <th class="success" style="color: white;">email</th>
                                  <th class="success" style="color: white;">address</th>
-                                 <th class="success" style="color: white;">Proof</th>
-{#                                  <th class="success" style="color: white;">Place</th>#}
-                                   <th class="success" style="color: white;">District</th>
-{#                                  <th class="success" style="color: white;">Status</th>#}
-                                    <th class="success" style="color: white;">Accept</th>
-          <th class="success" style="color: white;">Reject</th>
-              {% for i in Staff %}
+                                  <th class="success" style="color: white;">feedback</th>
+
+              {% for i in feeds %}
                                 <tr style="background-color:white;width: 700px;">
-                                    <td><img  style="width: 100px;height: 100px;" src="{{ i.photo.url }}" class="img-responsive" alt="slide"></td>
-                                    <td>{{ i.user.first_name}}</td>
-                                    <td>{{ i.contact}}</td>
-                                    <td>{{ i.email}}</td>
-                                    <td>{{ i.Address}}</td>
-                                    <td><a href="{{ i.id_proof.url }}" download>Download </a></td>
+                                    <td><img  style="width: 100px;height: 100px;" src="{{ i.USER.photo.url }}" class="img-responsive" alt="slide"></td>
+                                    <td>{{ i.USER.user.first_name}}</td>
+                                    <td>{{ i.USER.contact}}</td>
+                                    <td>{{ i.USER.email}}</td>
+                                    <td>{{ i.USER.Address}}</td>
 
-{#                                    <td>{{ i.place }}</td>#}
-                                    <td>{{ i.district }}</td>
-{#                                    <td>{{ i.status }}</td>#}
+                                    <td>{{ i.feedback }}</td>
 
-                                    <td><button style="background-color:lightslategray"><a href="staff_accepted?id={{ i.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>
-                                    <td><button style="background-color:lightslategray"><a href="staff_rejected?id={{ i.user_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>
+{#                                    <td><button style="background-color:lightslategray"><a href="staff_accepted?id={{ i.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>#}
+{#                                    <td><button style="background-color:lightslategray"><a href="staff_rejected?id={{ i.user_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>#}
 
                                 </tr>
               {% endfor %}

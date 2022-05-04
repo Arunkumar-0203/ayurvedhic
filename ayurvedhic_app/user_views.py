@@ -1,8 +1,7 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render
-from django.views.generic import TemplateView
-
-from ayurvedhic_app.models import doctor, booking, users
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView, View
+from ayurvedhic_app.models import doctor, booking, users, FEEDBACK, COMPLAINTS, pharmacy, give_medicine
 
 
 class index_view(TemplateView):
@@ -57,6 +56,7 @@ class user_booking(TemplateView):
         context['id']=result.id
         return context
     def post(self,request,*args,**kwargs):
+
         USER =users.objects.get(user_id=self.request.user.id)
         id=request.POST['id']
         date =request.POST['date']
@@ -70,7 +70,7 @@ class user_booking(TemplateView):
         Booking.description = Description
         Booking.status= 'booked'
         Booking.save()
-        return render(request, 'user/user_index.html',{'messages':'Booking successfully'})
+        return render(request, 'user/user_booking_form.html',{'messages':'Booking successfully'})
 
 class user_view_booking(TemplateView):
     template_name = 'user/user_view_booking.html'
@@ -81,3 +81,73 @@ class user_view_booking(TemplateView):
         context['BOOKING']=BOOKING
         return context
 
+class feedback(TemplateView):
+    template_name = 'user/feedback.html'
+    def get_context_data(self, **kwargs):
+        context = super(feedback,self).get_context_data(**kwargs)
+        USER = users.objects.get(user_id=self.request.user.id)
+        feeds = FEEDBACK.objects.filter(USER_id=USER.id)
+        context['feeds']=feeds
+        return context
+
+    def post(self,request,*args,**kwargs):
+        feed = request.POST['feed_back']
+        user = User.objects.get(id=self.request.user.id)
+        USERS = users.objects.get(user_id=user.id)
+        feeds = FEEDBACK()
+        feeds.USER_id = USERS.id
+        feeds.feedback = feed
+        feeds.save()
+        return redirect(request.META['HTTP_REFERER'])
+
+class complaint(TemplateView):
+    template_name = 'user/complaint.html'
+    def get_context_data(self, **kwargs):
+        context = super(complaint,self).get_context_data(**kwargs)
+        USER = users.objects.get(user_id=self.request.user.id)
+        complaintss = COMPLAINTS.objects.filter(USER_id=USER.id)
+        context['complaintss']=complaintss
+        return context
+
+    def post(self,request,*args,**kwargs):
+        complaintss = request.POST['complaint']
+        user = User.objects.get(id=self.request.user.id)
+        USERS = users.objects.get(user_id=user.id)
+        complaint = COMPLAINTS()
+        complaint.USER_id = USERS.id
+        complaint.complaints = complaintss
+        complaint.save()
+        return redirect(request.META['HTTP_REFERER'])
+
+class delete_feedback(View):
+    def dispatch(self, request, *args, **kwargs):
+        id = self.request.GET['id']
+        FEEDBACK.objects.get(id=id).delete()
+        return redirect(request.META['HTTP_REFERER'])
+
+class delete_complaint(View):
+    def dispatch(self, request, *args, **kwargs):
+        id = self.request.GET['id']
+        COMPLAINTS.objects.get(id=id).delete()
+        return redirect(request.META['HTTP_REFERER'])
+
+
+class prescription_status(TemplateView):
+    template_name = 'user/view_prescription_status.html'
+    def get_context_data(self,**kwargs):
+       context = super(prescription_status,self).get_context_data(**kwargs)
+       USER=users.objects.get(user_id=self.request.user.id)
+       give_medicines =give_medicine.objects.filter(Booking__user_id = USER.id)
+       # print(give_medicines.available_status1)
+       context['Prescription']=give_medicines
+       return context
+
+class view_prescription(TemplateView):
+    template_name = 'user/view_prescription.html'
+    def get_context_data(self, **kwargs):
+        context = super(view_prescription,self).get_context_data(**kwargs)
+        id =self.request.GET['id']
+        BOOKING = booking.objects.get(id=id,status='sent to pharmacy')
+        Prescription = give_medicine.objects.get(Booking_id = BOOKING.id)
+        context['Prescription']=Prescription
+        return context

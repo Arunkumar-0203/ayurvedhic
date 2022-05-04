@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView, View
 
-from ayurvedhic_app.models import doctor, staff, users, pharmacy
+from ayurvedhic_app.models import doctor, staff, users, pharmacy, FEEDBACK, COMPLAINTS, medicine
 
 
 class index_view(TemplateView):
@@ -10,6 +10,12 @@ class index_view(TemplateView):
 
 class doctors_index_view(TemplateView):
     template_name = 'admin/view_doctors_index.html'
+    def get_context_data(self, **kwargs):
+        context = super(doctors_index_view,self).get_context_data(**kwargs)
+        doctors = doctor.objects.all()
+        context['doctors']=doctors
+        return context
+
 
 
 class doctor_registration_list(TemplateView):
@@ -99,6 +105,11 @@ class doctor_rejected_list_accepted(View):
 
 class view_staff_index(TemplateView):
     template_name = 'admin/view_staff_index.html'
+    def get_context_data(self, **kwargs):
+        context = super(view_staff_index,self).get_context_data(**kwargs)
+        doctors = doctor.objects.all()
+        context['doctors']=doctors
+        return context
 
 
 class staff_registration_list(TemplateView):
@@ -190,6 +201,11 @@ class staff_rejected_list_accepted(View):
 
 class view_user_index(TemplateView):
     template_name = 'admin/view_user_index.html'
+    def get_context_data(self, **kwargs):
+        context = super(view_user_index,self).get_context_data(**kwargs)
+        doctors = doctor.objects.all()
+        context['doctors']=doctors
+        return context
 
 
 
@@ -279,29 +295,57 @@ class user_rejected_list_accepted(View):
 
 class view_medicine_index(TemplateView):
     template_name = 'admin/view_medicine_index.html'
+    def get_context_data(self, **kwargs):
+        context = super(view_medicine_index,self).get_context_data(**kwargs)
+        doctors = doctor.objects.all()
+        context['doctors']=doctors
+        return context
 
 class view_available_medicine_list(TemplateView):
     template_name = 'admin/view_available_medicine_list.html'
+    def get_context_data(self, **kwargs):
+        context = super(view_available_medicine_list,self).get_context_data(**kwargs)
+        medicines = medicine.objects.filter(status='active')
+        context['medicines']=medicines
+        return context
 
 
 class medicine_status(TemplateView):
     template_name = 'admin/medicine_status.html'
+    def get_context_data(self, **kwargs):
+        context = super(medicine_status,self).get_context_data(**kwargs)
+        medicines = medicine.objects.all()
+        context['medicines']=medicines
+        return context
 
 class request_medicine(TemplateView):
     template_name = 'admin/request_medicine.html'
 
+
 class view_feedback(TemplateView):
     template_name = 'admin/view_feedback.html'
+    def get_context_data(self, **kwargs):
+        context = super(view_feedback,self).get_context_data(**kwargs)
+        feeds = FEEDBACK.objects.all()
+        context['feeds']=feeds
+        return context
 
 class view_complaint(TemplateView):
     template_name = 'admin/view_complaint.html'
-
-
-
+    def get_context_data(self, **kwargs):
+        context = super(view_complaint,self).get_context_data(**kwargs)
+        complaint = COMPLAINTS.objects.all()
+        context['complaint']=complaint
+        return context
 
 
 class view_Pharmacy_index(TemplateView):
     template_name = 'admin/view_pharmacy_index.html'
+    def get_context_data(self, **kwargs):
+        context = super(view_Pharmacy_index,self).get_context_data(**kwargs)
+        doctors = doctor.objects.all()
+        context['doctors']=doctors
+        return context
 
 
 

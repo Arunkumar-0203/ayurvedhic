@@ -40,14 +40,14 @@ alert("{{ messages }}")
              <a class="nav-link" href="medicine_status" >Medicine Status</a>
             </div>
           </div>
-          <div class="col-md-3 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-accent text-white">
-                <span class="mai-shield-checkmark"></span>
-              </div>
-               <a class="nav-link" href="request_medicine" >Request to Medicine</a>
-            </div>
-          </div>
+{#          <div class="col-md-3 py-3 py-md-0">#}
+{#            <div class="card-service wow fadeInUp">#}
+{#              <div class="circle-shape bg-accent text-white">#}
+{#                <span class="mai-shield-checkmark"></span>#}
+{#              </div>#}
+{#               <a class="nav-link" href="request_medicine" >Request to Medicine</a>#}
+{#            </div>#}
+{#          </div>#}
 {#            <div class="col-md-3 py-3 py-md-0">#}
 {#            <div class="card-service wow fadeInUp">#}
 {#              <div class="circle-shape bg-accent text-white">#}
@@ -71,31 +71,14 @@ alert("{{ messages }}")
       <table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 1000px;">
                                  <th class="success" style="color: white;">Photo</th>
                                  <th class="success" style="color: white;">name</th>
-                                 <th class="success" style="color: white;">contact</th>
-                                 <th class="success" style="color: white;">email</th>
-                                 <th class="success" style="color: white;">address</th>
-                                 <th class="success" style="color: white;">Proof</th>
-{#                                  <th class="success" style="color: white;">Place</th>#}
-                                   <th class="success" style="color: white;">District</th>
-{#                                  <th class="success" style="color: white;">Status</th>#}
-                                    <th class="success" style="color: white;">Accept</th>
-          <th class="success" style="color: white;">Reject</th>
-              {% for i in USER %}
+                                 <th class="success" style="color: white;">Quantity</th>
+                                 <th class="success" style="color: white;">price</th>
+              {% for i in medicines %}
                                 <tr style="background-color:white;width: 700px;">
                                     <td><img  style="width: 100px;height: 100px;" src="{{ i.photo.url }}" class="img-responsive" alt="slide"></td>
-                                    <td>{{ i.user.first_name}}</td>
-                                    <td>{{ i.contact}}</td>
-                                    <td>{{ i.email}}</td>
-                                    <td>{{ i.Address}}</td>
-                                    <td><a href="{{ i.id_proof.url }}" download>Download </a></td>
-
-{#                                    <td>{{ i.place }}</td>#}
-                                    <td>{{ i.district }}</td>
-{#                                    <td>{{ i.status }}</td>#}
-
-                                    <td><button style="background-color:lightslategray"><a href="user_accepted?id={{ i.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>
-                                    <td><button style="background-color:lightslategray"><a href="user_rejected?id={{ i.user_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>
-
+                                    <td>{{ i.med_name}}</td>
+                                    <td>{{ i.quantity}}</td>
+                                    <td>{{ i.med_price}}</td>
                                 </tr>
               {% endfor %}
 

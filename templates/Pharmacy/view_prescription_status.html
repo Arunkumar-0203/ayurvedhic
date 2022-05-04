@@ -1,4 +1,4 @@
-{% extends 'user/user_base.html' %}
+{% extends 'Pharmacy/pharmacy_base.html' %}
 {% load static  %}
 {% block content %}
       {% if messages %}
@@ -6,13 +6,15 @@
 alert("{{ messages }}")
 </script>
 {% endif %}
-  <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/doctorbanner.jpg' %});">
-    <div class="hero-section">
+  <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/Slider-2-2.png' %});">
+
+     <div class="hero-section">
       <div class="container text-center wow zoomIn">
-        <h1 class="subhead" style="color: darkgreen;padding-bottom: 400px">USER PANEL</h1>
-{#        <h1 class="display-4" style="color: white">Healthy Living</h1>#}
+        <h1 class="subhead" style="color: white">PHARMACY PANEL</h1>
+        <h1 class="display-4" style="color: white">Healthy Living</h1>
 {#        <a href="#" class="btn btn-primary">Let's Consult</a>#}
       </div>
+    </div>
     </div>
 
   </div>
@@ -49,61 +51,44 @@ alert("{{ messages }}")
         </div>
       </div>
     </div> <!-- .page-section -->
-
-  <div class="page-section bg-light">
-    <div class="container">
-        <form action="" method="post" class="main-form" style="padding-right: 1500px">
-          {% csrf_token %}
-        <div class="row mt-5 ">
-
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-              <h1>Select Category</h1>
-           <select style="background-color:lightslategray;width: 300px;" class="form-control"  name="category" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
-                               <option  required="required">---Select---</option>
-                               <option value="Toxicology">Toxicology</option>
-                               <option value="Sexologist">Sexologist</option>
-                               <option value="Accupressure">Accupressure</option>
-                               <option value="Gynaecologist">Gynaecologist</option>
-                               <option value="Naturopathy">Naturopathy</option>
-                               <option value="General Medicine">General Medicine</option>
-                               </select>
-          </div>
-
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-3 wow zoomIn">SUBMIT</button>
-      </form>
-    </div>
-  </div> <!-- .page-section -->
+{
 
 
-
-    <div class="page-section bg-light">
-    <div class="container">
-      <table class="table">
+    <div class="page-section bg-light" style="padding-right: 100px">
+    <div class="container" >
+      <table class="table" >
                           <tr>
-                              <td>Image</td>
+                              <td>user Image</td>
                               <th>Name</th>
-                              <th>Email</th>
                               <th>Phone</th>
-                              <th>Address</th>
-{#                              <th>Status</th>#}
-{#                              <th>Remove</th>#}
-                              <th>Booking</th>
+                              <th>Email</th>
+                              <th>Doctor</th>
+                              <th>image</th>
+                              <th>phone</th>
+{#                              <th>not available medicine</th>#}
+{#                              <th>Out of stock</th>#}
+                              <th>View prescription</th>
+
                           </tr>
-                        {% for i in  Doctor %}
+                       <form action="" method="post">
+                       {% csrf_token %}
+                        {% for i in  Prescription %}
                           <tr>
-                              <td><img  style="width: 100px;height: 100px;" src="{{ i.photo.url }}" class="img-responsive" alt="slide"></td>
-                              <td>{{ i.user.first_name }}</td>
-                              <td>{{ i.email }}</td>
-                              <td>{{ i.contact }}</td>
-                              <td>{{ i.Address }}</td>
-{#                              <td>{{ i.status }}</td>#}
-{#                              <td><a href="remove_division?id={{ i.id }}" class="badge badge-danger">Edit</a></td>#}
-{#                              <td><a href="Remove_Medicine?id={{ i.id }}" class="badge badge-danger">remove</a></td>#}
-                           <td><a href="user_booking?id={{ i.id }}" class="badge badge-danger">Booking</a></td>
+                              <td><img  style="width: 100px;height: 100px;" src="{{ i.Booking.user.photo.url }}" class="img-responsive" alt="slide"></td>
+                              <td>{{ i.Booking.user.user.first_name }}</td>
+                              <td>{{ i.Booking.user.contact }}</td>
+                              <td>{{ i.Booking.user.email }}</td>
+                              <td>{{ i.Booking.doctor_id.user.first_name }}</td>
+                              <td><img  style="width: 100px;height: 100px;" src="{{ i.Booking.doctor_id.photo.url }}" class="img-responsive" alt="slide"></td>
+                               <td>{{ i.Booking.doctor_id.contact }}</td>
+{#                              <td><a href="view_not_available_medicine?id={{ i.Booking_id }}" class="badge badge-danger">not available</a></td>#}
+{#                              <td><a href="view_out_of_stock?id={{ i.Booking_id }}" class="badge badge-danger">out of stock</a></td>#}
+                              <td><a href="view_prescription?id={{ i.Booking_id }}" class="badge badge-danger">View prescription</a></td>
+
+                               <input type="hidden" name="id" value="{{ i.id }}" id="" placeholder="">
                           </tr>
                         {% endfor %}
+                       </form>
 
                         </tbody>
                       </table>
@@ -112,33 +97,6 @@ alert("{{ messages }}")
 
 
 
-{#  <div class="page-section">#}
-{#    <div class="container">#}
-{#      <h1 class="text-center mb-5 wow fadeInUp">Our Doctors</h1>#}
-{##}
-{#      <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">#}
-{#        {% for i in Doctor %}#}
-{#        <div class="item">#}
-{#          <div class="card-doctor">#}
-{#            <div class="header">#}
-{#              <img src="{{ i.photo.url }}" alt="">#}
-{#              <div class="meta">#}
-{#                <a href="#"><span class="mai-call"></span></a>#}
-{#                <a href="#"><span class="mai-logo-whatsapp"></span></a>#}
-{#              </div>#}
-{#            </div>#}
-{#            <div class="body">#}
-{#              <p class="text-xl mb-0">Dr. {{ i.user.first_name }}</p>#}
-{#              <span class="text-sm text-grey">Cardiology</span>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#          {% endfor %}#}
-{#        </div>#}
-{##}
-{#      </div>#}
-{#    </div>#}
-{#  </div>#}
 
   <div class="page-section bg-light">
     <div class="container">

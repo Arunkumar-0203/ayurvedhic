@@ -1,4 +1,4 @@
-{% extends 'Pharmacy/pharmacy_base.html' %}
+{% extends 'user/user_base.html' %}
 {% load static  %}
 {% block content %}
       {% if messages %}
@@ -9,7 +9,7 @@ alert("{{ messages }}")
   <div class="page-hero bg-image " style="background-image: url({% static 'assets/img/doctorbanner.jpg' %});">
     <div class="hero-section">
       <div class="container text-center wow zoomIn">
-        <h1 class="subhead" style="color: darkgreen;padding-bottom: 400px">DOCTOR PANEL</h1>
+        <h1 class="subhead" style="color: darkgreen;padding-bottom: 400px">USER PANEL</h1>
 {#        <h1 class="display-4" style="color: white">Healthy Living</h1>#}
 {#        <a href="#" class="btn btn-primary">Let's Consult</a>#}
       </div>
@@ -50,6 +50,31 @@ alert("{{ messages }}")
       </div>
     </div> <!-- .page-section -->
 
+{#  <div class="page-section bg-light">#}
+{#    <div class="container">#}
+{#        <form action="" method="post" class="main-form" style="padding-right: 1500px">#}
+{#          {% csrf_token %}#}
+{#        <div class="row mt-5 ">#}
+{##}
+{#          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">#}
+{#              <h1>Select Category</h1>#}
+{#           <select style="background-color:lightslategray;width: 300px;" class="form-control"  name="category" id="PLACE" required="required" onchange="show_dis(this.value,0)" >#}
+{#                               <option  required="required">---Select---</option>#}
+{#                               <option value="Toxicology">Toxicology</option>#}
+{#                               <option value="Sexologist">Sexologist</option>#}
+{#                               <option value="Accupressure">Accupressure</option>#}
+{#                               <option value="Gynaecologist">Gynaecologist</option>#}
+{#                               <option value="Naturopathy">Naturopathy</option>#}
+{#                               <option value="General Medicine">General Medicine</option>#}
+{#                               </select>#}
+{#          </div>#}
+{##}
+{#        </div>#}
+{##}
+{#        <button type="submit" class="btn btn-primary mt-3 wow zoomIn">SUBMIT</button>#}
+{#      </form>#}
+{#    </div>#}
+{#  </div> <!-- .page-section -->#}
 
 
 
@@ -114,7 +139,7 @@ alert("{{ messages }}")
                               <th>Quantity</th>
                               <th>Time</th>
                               <th>Consider food</th>
-{#                               <th>status</th>#}
+                               <th>status</th>
                           </tr>
 
                           <tr>
@@ -125,7 +150,7 @@ alert("{{ messages }}")
                               <td><input type="text" readonly   class="form-control" value="{{ Prescription.Quantity1 }}"  name="Quantity1" placeholder="{{ Prescription.Quantity1 }}"></td>
                               <td><input type="text" readonly   class="form-control" value="{{ Prescription.time1 }} "  name="time1" placeholder="{{ Prescription.time1 }}"> </td>
                               <td><input type="text" readonly   class="form-control"  value="{{ Prescription.food_time1 }}" name="food_time1" placeholder="{{ Prescription.food_time1 }}"> </td>
-{#                               <td><input type="text" readonly   class="form-control"  value="{{ Prescription.available_status1 }}" name="food_time1" placeholder="{{ Prescription.available_status1 }}"> </td>#}
+                               <td><input type="text" readonly   class="form-control"  value="{{ Prescription.available_status1 }}" name="food_time1" placeholder="{{ Prescription.available_status1 }}"> </td>
 
                           </tr>
                           <tr>
@@ -135,7 +160,7 @@ alert("{{ messages }}")
                               <td><input type="text"  readonly   class="form-control"  name="Quantity2" value="{{ Prescription.Quantity2 }}" placeholder="{{ Prescription.Quantity2 }}"></td>
                               <td><input type="text"  readonly   class="form-control"  name="time2" value="{{ Prescription.time2}}" placeholder="{{ Prescription.time2}}"> </td>
                               <td><input type="text" readonly   class="form-control"  name="food_time2" value="{{ Prescription.food_time2 }}" placeholder="{{ Prescription.food_time2 }}"> </td>
-{#                              <td><input type="text" readonly   class="form-control"  value="{{ available_status1 }}" name="food_time1" placeholder="{{ available_status1 }}"> </td>#}
+                              <td><input type="text" readonly   class="form-control"  value="{{ Prescription.available_status2 }}" name="food_time1" placeholder="{{ Prescription.available_status2 }}"> </td>
                           </tr>
                           <tr>
                               <td>3</td>
@@ -144,7 +169,7 @@ alert("{{ messages }}")
                               <td><input type="text" readonly   class="form-control"  name="Quantity3"   value="{{ Prescription.Quantity3 }}" placeholder="{{ Prescription.Quantity3 }}"></td>
                               <td><input type="text" readonly   class="form-control"  name="time3"       value="{{ Prescription.time3 }}" placeholder="{{ Prescription.time3 }}"> </td>
                               <td><input type="text" readonly   class="form-control"  name="food_time3"  value="{{ Prescription.food_time3 }}" placeholder="{{ Prescription.food_time3 }}"> </td>
-{#                              <td><input type="text" readonly   class="form-control"  value="{{ available_status1 }}" name="food_time1" placeholder="{{ available_status1 }}"> </td>#}
+                              <td><input type="text" readonly   class="form-control"  value="{{ Prescription.available_status3 }}" name="food_time1" placeholder="{{ Prescription.available_status3 }}"> </td>
                           </tr>
                           <tr>
                               <td>4</td>
@@ -153,7 +178,7 @@ alert("{{ messages }}")
                               <td><input type="text" readonly  class="form-control"  name="Quantity4"  value="{{ Prescription.Quantity4 }}" placeholder="{{ Prescription.Quantity4 }}"></td>
                               <td><input type="text" readonly   class="form-control"  name="time4"      value="{{ Prescription.time4 }}" placeholder="{{ Prescription.time4 }}"> </td>
                               <td><input type="text" readonly   class="form-control"  name="food_time4" value="{{ Prescription.food_time4 }}" placeholder="{{ Prescription.food_time4 }}"> </td>
-{#                              <td><input type="text" readonly   class="form-control"  value="{{ available_status1 }}" name="food_time1" placeholder="{{ available_status1 }}"> </td>#}
+                              <td><input type="text" readonly   class="form-control"  value="{{ Prescription.available_status4 }}" name="food_time1" placeholder="{{ Prescriptionavailable_status4 }}"> </td>
                           </tr>
                           <tr>
                               <td>5</td>
@@ -162,7 +187,7 @@ alert("{{ messages }}")
                               <td><input type="text" readonly   class="form-control"  name="Quantity5"  value="{{ Prescription.Quantity5 }}" placeholder="{{ Prescription.Quantity5 }}"></td>
                               <td><input type="text" readonly   class="form-control"  name="time5"      value="{{ Prescription.time5 }}" placeholder="{{ Prescription.time5 }}"> </td>
                               <td><input type="text" readonly   class="form-control"  name="food_time5" value="{{ Prescription.food_time5 }}" placeholder="{{ Prescription.food_time5 }}"> </td>
-{#                              <td><input type="text" readonly   class="form-control"  value="{{ available_status1 }}" name="food_time1" placeholder="{{ available_status1 }}"> </td>#}
+                              <td><input type="text" readonly   class="form-control"  value="{{ Prescriptionavailable_status5 }}" name="food_time1" placeholder="{{ Prescription.available_status5 }}"> </td>
                           </tr>
                           <tr>
                               <td>6</td>
@@ -171,7 +196,7 @@ alert("{{ messages }}")
                               <td><input type="text"  readonly  class="form-control"  name="Quantity6" value="{{ Prescription.Quantity6 }}" placeholder="{{ Prescription.Quantity6 }}"></td>
                               <td><input type="text"  readonly class="form-control"   name="time6" value="{{ Prescription.time6 }}" placeholder="{{ Prescription.time6 }}"> </td>
                               <td><input type="text"  readonly class="form-control"   name="food_time6" value="{{ Prescription.food_time6 }}" placeholder="{{ Prescription.food_time6 }}"> </td>
-{#                              <td><input type="text" readonly   class="form-control"  value="{{ available_status1 }}" name="food_time1" placeholder="{{ available_status1 }}"> </td>#}
+                              <td><input type="text" readonly   class="form-control"  value="{{ Prescription.available_status6 }}" name="food_time1" placeholder="{{ Prescription.available_status6 }}"> </td>
                           </tr>
                           <tr>
                               <td>7</td>
@@ -180,7 +205,7 @@ alert("{{ messages }}")
                               <td><input type="text"  readonly  class="form-control"  name="Quantity7" value="{{ Prescription.Quantity7 }}" placeholder="{{ Prescription.Quantity7 }}"></td>
                               <td><input type="text"  readonly class="form-control"   name="time7" value="{{ Prescription.time7 }}" placeholder="{{ Prescription.time7 }}"> </td>
                               <td><input type="text"  readonly class="form-control"   name="food_time7" value="{{ Prescription.food_time7 }}" placeholder="{{ Prescription.food_time7 }}"> </td>
-{#                              <td><input type="text" readonly   class="form-control"  value="{{ available_status1 }}" name="food_time1" placeholder="{{ available_status1 }}"> </td>#}
+                              <td><input type="text" readonly   class="form-control"  value="{{ Prescription.available_status7 }}" name="food_time1" placeholder="{{ Prescription.available_status7 }}"> </td>
                           </tr>
                           <tr>
                               <td>8</td>
@@ -189,7 +214,7 @@ alert("{{ messages }}")
                               <td><input type="text"  readonly  class="form-control"   name="Quantity8" value="{{ Prescription.Quantity8 }}" placeholder="{{ Prescription.Quantity8 }}"></td>
                               <td><input type="text"  readonly class="form-control"    name="time8" value="{{ Prescription.time8 }}" placeholder="{{ Prescription.time8 }}"> </td>
                               <td><input type="text"  readonly class="form-control"    name="food_time8" value="{{ Prescription.food_time8 }}" placeholder="{{ Prescription.food_time8 }}"> </td>
-{#                              <td><input type="text" readonly   class="form-control"  value="{{ available_status1 }}" name="food_time1" placeholder="{{ available_status1 }}"> </td>#}
+                              <td><input type="text" readonly   class="form-control"  value="{{ Prescription.available_status8 }}" name="food_time1" placeholder="{{ Prescriptionavailable_status8 }}"> </td>
                           </tr>
                           <tr>
                               <td>9</td>
@@ -198,7 +223,7 @@ alert("{{ messages }}")
                               <td><input type="text"   readonly  class="form-control"    name="Quantity9" value="{{ Prescription.Quantity9 }}" placeholder="{{ Prescription.Quantity9 }}"></td>
                               <td><input type="text"   readonly class="form-control"     name="time9" value="{{ Prescription.time9 }}" placeholder="{{ Prescription.time9 }}"> </td>
                               <td><input type="text"   readonly class="form-control"     name="food_time9" value="{{ Prescription.food_time9 }}" placeholder="{{ Prescription.food_time9 }}"> </td>
-{#                              <td><input type="text" readonly   class="form-control"  value="{{ available_status1 }}" name="food_time1" placeholder="{{ available_status1 }}"> </td>#}
+                              <td><input type="text" readonly   class="form-control"  value="{{ Prescription.available_status9 }}" name="food_time1" placeholder="{{ Prescription.available_status9 }}"> </td>
                           </tr>
 
 
@@ -209,25 +234,154 @@ alert("{{ messages }}")
                 </tr>
             </tbody>
         </table>
-        <div class="button_group">
-            <button class="issue_prescription btn btn-success">Issue</button>
-            <!-- <button class="pdf_prescription btn btn-danger">PDF</button> -->
-        </div>
-        <div id="snacking">Saving...</div>
-        <div id="snacked">Saved!</div>
-    </div>
-</div>
-
-<script id="new_medicine" type="text/template">
-
-</script>
-        </form>
     </div>
   </div> <!-- .page-section -->
 
 
 
+{#  <div class="page-section">#}
+{#    <div class="container">#}
+{#      <h1 class="text-center mb-5 wow fadeInUp">Our Doctors</h1>#}
+{##}
+{#      <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">#}
+{#        {% for i in Doctor %}#}
+{#        <div class="item">#}
+{#          <div class="card-doctor">#}
+{#            <div class="header">#}
+{#              <img src="{{ i.photo.url }}" alt="">#}
+{#              <div class="meta">#}
+{#                <a href="#"><span class="mai-call"></span></a>#}
+{#                <a href="#"><span class="mai-logo-whatsapp"></span></a>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="body">#}
+{#              <p class="text-xl mb-0">Dr. {{ i.user.first_name }}</p>#}
+{#              <span class="text-sm text-grey">Cardiology</span>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#          {% endfor %}#}
+{#        </div>#}
+{##}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
 
+  <div class="page-section bg-light">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">AYURVEDA TREATMENT</h1>
+      <div class="row mt-5">
+        <div class="col-lg-4 py-2 wow zoomIn">
+            <div>
+{#          <div class="card-blog">#}
+            <div class="header">
+               <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img  src="{% static 'assets/img/Ayurvedic-Practitioner.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">List of Countries without Coronavirus case</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 1 week ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div >
+              <div>
+{#            <div class="header">#}
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Anxiety-Disorder.jpg' %}" alt="">
+
+            </div>
+{#            <div class="body">#}
+{#              <h5 class="post-title"><a href="blog-details.html">Recovery Room: News beyond the pandemic</a></h5>#}
+{#              <div class="site-info">#}
+{#                <div class="avatar mr-2">#}
+{#                  <div class="avatar-img">#}
+{#                    <img src="{% static 'assets/img/person/person_1.jpg' %}" alt="">#}
+{#                  </div>#}
+{#                  <span>Roger Adams</span>#}
+{#                </div>#}
+{#                <span class="mai-time"></span> 4 weeks ago#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Joint-Pain.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+          <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/hair-fall-1.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/Hormonal-Imbalance.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+           <div class="col-lg-4 py-2 wow zoomIn">
+          <div>
+            <div >
+              <div class="post-category">
+{#                <a href="#">Covid19</a>#}
+              </div>
+
+                <img src="{% static 'assets/img/sex-wellness-1.jpg' %}" alt="">
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12 text-center mt-4 wow zoomIn">
+          <a href="blog.html" class="btn btn-primary">Read More</a>
+        </div>
+
+      </div>
+    </div>
+  </div> <!-- .page-section -->
+  <div  class="page-hero bg-image " style="background-image: url({% static 'assets/img/banner1.jpg' %}); height: 400px">
 
 
   </div>
