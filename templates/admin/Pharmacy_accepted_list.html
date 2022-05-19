@@ -24,14 +24,14 @@ alert("{{ messages }}")
     <div class="page-section py-3 mt-md-n5 custom-index">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-3 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-secondary text-white">
-                 <span class="mai-shield-checkmark"></span>
-              </div>
-              <a class="nav-link" href="Pharmacy_registration_list" > Pharmacy Registered list</a>
-            </div>
-          </div>
+{#          <div class="col-md-3 py-3 py-md-0">#}
+{#            <div class="card-service wow fadeInUp">#}
+{#              <div class="circle-shape bg-secondary text-white">#}
+{#                 <span class="mai-shield-checkmark"></span>#}
+{#              </div>#}
+{#              <a class="nav-link" href="Pharmacy_registration_list" > Pharmacy Registered list</a>#}
+{#            </div>#}
+{#          </div>#}
           <div class="col-md-3 py-3 py-md-0">
             <div class="card-service wow fadeInUp">
               <div class="circle-shape bg-primary text-white">
@@ -40,14 +40,14 @@ alert("{{ messages }}")
              <a class="nav-link" href="Pharmacy_accepted_list" >Pharmacy Accepted list</a>
             </div>
           </div>
-          <div class="col-md-3 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-accent text-white">
-                <span class="mai-shield-checkmark"></span>
-              </div>
-               <a class="nav-link" href="Pharmacy_rejected_list" >Pharmacy Rejected list</a>
-            </div>
-          </div>
+{#          <div class="col-md-3 py-3 py-md-0">#}
+{#            <div class="card-service wow fadeInUp">#}
+{#              <div class="circle-shape bg-accent text-white">#}
+{#                <span class="mai-shield-checkmark"></span>#}
+{#              </div>#}
+{#               <a class="nav-link" href="Pharmacy_rejected_list" >Pharmacy Rejected list</a>#}
+{#            </div>#}
+{#          </div>#}
 {#            <div class="col-md-3 py-3 py-md-0">#}
 {#            <div class="card-service wow fadeInUp">#}
 {#              <div class="circle-shape bg-accent text-white">#}
@@ -75,9 +75,9 @@ alert("{{ messages }}")
                                  <th class="success" style="color: white;">address</th>
                                  <th class="success" style="color: white;">Proof</th>
 {#                                  <th class="success" style="color: white;">Place</th>#}
-                                   <th class="success" style="color: white;">District</th>
+{#                                   <th class="success" style="color: white;">District</th>#}
 {#                                  <th class="success" style="color: white;">Status</th>#}
-                                    <th class="success" style="color: white;">Accept</th>
+{#                                    <th class="success" style="color: white;">Accept</th>#}
           <th class="success" style="color: white;">Reject</th>
               {% for i in PARMACY %}
                                 <tr style="background-color:white;width: 700px;">
@@ -92,8 +92,8 @@ alert("{{ messages }}")
                                     <td>{{ i.district }}</td>
 {#                                    <td>{{ i.status }}</td>#}
 
-                                    <td><button style="background-color:lightslategray"><a href="Pharmacy_accepted?id={{ i.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>
-                                    <td><button style="background-color:lightslategray"><a href="Pharmacy_rejected?id={{ i.user_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>
+{#                                    <td><button style="background-color:lightslategray"><a href="Pharmacy_accepted?id={{ i.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>#}
+{#                                    <td><button style="background-color:lightslategray"><a href="Pharmacy_rejected?id={{ i.user_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>#}
 
                                 </tr>
               {% endfor %}

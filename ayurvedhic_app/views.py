@@ -59,7 +59,7 @@ class user_registration_view(TemplateView):
         password=request.POST['password']
         print(password)
         try:
-            user = User.objects.create_user(first_name = name,email=email,password=password,username=username,last_name=0)
+            user = User.objects.create_user(first_name = name,email=email,password=password,username=username,last_name=1)
             table_user= users()
             table_user.user_id =user.id
             table_user.place = Place
@@ -70,7 +70,7 @@ class user_registration_view(TemplateView):
             table_user.contact   = Phone
             table_user.email       = email
             table_user.Address   = ADRESS
-            table_user.status   = "registered"
+            table_user.status   = "accepted"
             table_user.district      =District
             usertype = UserType()
             usertype.user = user
@@ -161,7 +161,7 @@ class pharmacy_registration_view(TemplateView):
         password=request.POST['password']
         print(password)
         try:
-            user = User.objects.create_user(first_name = name,email=email,password=password,username=username,last_name=0)
+            user = User.objects.create_user(first_name = name,email=email,password=password,username=username,last_name=1)
             table_pharmacy= pharmacy()
             table_pharmacy.user_id =user.id
             table_pharmacy.place = Place
@@ -170,7 +170,7 @@ class pharmacy_registration_view(TemplateView):
             table_pharmacy.contact   = Phone
             table_pharmacy.email       = email
             table_pharmacy.Address   = ADRESS
-            table_pharmacy.status   = "registered"
+            table_pharmacy.status   = "accepted"
             table_pharmacy.district      =District
             usertype = UserType()
             usertype.user = user
